@@ -12,7 +12,6 @@ import pandas as pd
 from config import MORTALITY_MODEL_PATH, READMISSION_MODEL_PATH, USE_BIOCLINICAL_BERT, BERT_MODEL_NAME
 
 
-
 @dataclass
 class PredictionMeta:
     created_at: str
