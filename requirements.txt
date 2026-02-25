@@ -8,7 +8,3 @@ scikit-learn==1.2.2
 xgboost==1.7.6
 catboost==1.2.2
 joblib==1.4.2
-transformers==4.40.1
-torch==2.2.2
-sentencepiece==0.2.0
-tokenizers==0.15.2
