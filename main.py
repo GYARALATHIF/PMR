@@ -13,8 +13,8 @@ from schemas import PredictRequest, RiskPrediction
 
 
 app = FastAPI(title="Patient Risk Predictor API", version="2.0.0")
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="."), name="static")
+templates = Jinja2Templates(directory=".")
 
 predictor = RiskPredictor()
 prediction_history = deque(maxlen=100)
