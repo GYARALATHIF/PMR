@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 
 MORTALITY_MODEL_PATH = BASE_DIR / "mortality_model.pkl"
 READMISSION_MODEL_PATH = BASE_DIR / "readmission_catboost_model.pkl"
