@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Risk Predictor</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="panel form-panel">
+      <h1>Patient Mortality + Readmission Predictor</h1>
+      <p class="subtitle">Real-time clinical risk scoring with live status and prediction history.</p>
+
+      <form id="predict-form">
+        <div class="grid">
+          <label>Length of Stay (days)
+            <input type="number" name="los_days" min="0" max="100" value="5" required />
+          </label>
+          <label>Number of Diagnoses
+            <input type="number" name="num_diagnoses" min="0" max="50" value="2" required />
+          </label>
+          <label>Number of Procedures
+            <input type="number" name="num_procedures" min="0" max="50" value="1" required />
+          </label>
+
+          <label>Insurance
+            <select name="insurance">
+              <option>PRIVATE</option>
+              <option>PUBLIC</option>
+              <option>OTHER</option>
+            </select>
+          </label>
+
+          <label>Discharge Group
+            <select name="discharge_group">
+              <option>HOME</option>
+              <option>FACILITY</option>
+              <option>DEATH</option>
+              <option>OTHER</option>
+            </select>
+          </label>
+
+          <label>Admission Type
+            <select name="admission_type">
+              <option>EMERGENCY</option>
+              <option>URGENT</option>
+              <option>ELECTIVE</option>
+            </select>
+          </label>
+
+          <label>Admission Location
+            <select name="admission_location">
+              <option>EMERGENCY ROOM ADMIT</option>
+              <option>TRANSFER</option>
+              <option>CLINIC REFERRAL</option>
+            </select>
+          </label>
+
+          <label>Ethnicity
+            <select name="ethnicity">
+              <option>WHITE</option>
+              <option>BLACK</option>
+              <option>HISPANIC</option>
+              <option>ASIAN</option>
+              <option>OTHER</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="checks">
+          <label><input type="checkbox" name="has_sepsis" /> Has Sepsis</label>
+          <label><input type="checkbox" name="has_diabetes" /> Has Diabetes</label>
+          <label><input type="checkbox" name="has_vent" /> Ventilated</label>
+        </div>
+
+        <label>Clinical Note
+          <textarea name="clinical_note" rows="8" placeholder="Paste clinical summary note..." required></textarea>
+        </label>
+
+        <button id="predict-btn" type="submit">Predict Risk</button>
+      </form>
+    </section>
+
+    <section class="panel output-panel">
+      <div class="live-row">
+        <span id="live-dot" class="dot"></span>
+        <span id="live-text">Connecting live status...</span>
+      </div>
+
+      <div class="result-card">
+        <h2>Mortality</h2>
+        <div class="meter"><div id="mortality-bar" class="meter-fill"></div></div>
+        <p id="mortality-text">No prediction yet</p>
+      </div>
+
+      <div class="result-card">
+        <h2>Readmission</h2>
+        <div class="meter"><div id="readmission-bar" class="meter-fill"></div></div>
+        <p id="readmission-text">No prediction yet</p>
+      </div>
+
+      <div class="result-card">
+        <h2>Model Runtime</h2>
+        <p id="embedding-mode">Embedding mode: -</p>
+      </div>
+
+      <div class="result-card">
+        <h2>Recent Predictions</h2>
+        <ul id="history-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
