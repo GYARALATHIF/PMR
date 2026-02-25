@@ -7,9 +7,10 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from .config import APP_ENV
-from .inference import RiskPredictor
-from .schemas import PredictRequest, RiskPrediction
+from config import APP_ENV
+from inference import RiskPredictor
+from schemas import PredictRequest, RiskPrediction
+
 
 app = FastAPI(title="Patient Risk Predictor API", version="2.0.0")
 app.mount("/static", StaticFiles(directory="static"), name="static")
